@@ -19,7 +19,7 @@ function Quiz() {
         userAnswers.push(formData.get(`q${i}`));
       }
 
-      const response = await fetch("http://localhost:5000/submit", {
+      const response = await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
