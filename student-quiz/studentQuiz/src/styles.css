@@ -1,0 +1,312 @@
+/* src/components/styles.css */
+@font-face {
+  font-family: 'lamba';
+  src: url('./assets/Yq6R-LCAWCX3-6Ky7FAFrOF6kg.woff2');
+}
+@font-face {
+  font-family: 'pxiBy';
+  src: url('./assets/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff2');
+}
+/* Loader styles */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid black;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader-container p {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+/* General body styling */
+body {
+    font-family: 'lamba', Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  /* Headings */
+  h1, h2 {
+    color: black;
+    margin-bottom: 1.5rem;
+  }
+  .home form{
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  /* Home form */
+  .home input[type="text"] {
+    width: 250px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .home input[type="text"] {
+    width: 250px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.199);
+  }
+  
+  .home button {
+    background-color: rgb(18, 18, 18);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .sksp{
+    margin-top: 0;
+    font-size: 5rem;
+    text-transform: uppercase;
+  }
+  
+  .home button:hover {
+    background-color: rgba(0, 0, 0, 0.507);
+  }
+  
+  /* Quiz form */
+  .quiz-container form {
+    display: inline-block;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-family: 'pxiBy';
+  }
+  
+  .question {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid black;
+  }
+  
+  .question p {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  label {
+    display: block;
+    padding: 8px;
+    background: #ecf0f1;
+    border-radius: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  label:hover {
+    background: #d5dbdb;
+  }
+  
+  .quiz-container button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'pxiBy';
+  }
+  
+  .quiz-container button:hover {
+    background-color: rgba(0, 0, 0, 0.731);
+  }
+  
+  /* Overall Layout */
+.result-wrapper {
+  min-height: 100vh;
+  padding: 2rem;
+  /* background: #f5f7fa; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'pxiBy';
+}
+
+/* Grid for Score + Weak Topics */
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+/* Card Styling */
+.card {
+  background: rgba(255, 255, 255, 0.674);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transition: 0.3s ease;
+  
+}
+
+.card h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+  mix-blend-mode: difference;
+}
+
+/* Score Specific */
+.score-card .score-value {
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  mix-blend-mode: difference;
+}
+
+/* Weak Topics */
+.weak-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  mix-blend-mode: difference;
+}
+
+.weak-item {
+  color: white;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* Recommended Learning */
+.learning-card {
+  max-width: 900px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.section-heading {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white;
+  margin-top: 1.5rem;
+  width: 50%;
+  text-align: left;
+  mix-blend-mode: difference;
+}
+
+.learning-list {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  color: #555;
+  mix-blend-mode: difference;
+  
+}
+
+.learning-paragraph {
+  margin-top: 0.5rem;
+  color: #444;
+  line-height: 1.6;
+  text-align: left;
+  color: white;
+  mix-blend-mode: difference;
+}
+
+/* Button */
+.button-wrapper {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.quiz-button {
+  padding: 0.75rem 1.75rem;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.quiz-button:hover {
+  background-color: rgba(0, 0, 0, 0.685);
+}
+/* Loader wrapper */
+.loader-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f7fa;
+  position: relative;
+  z-index: 10;
+}
+
+/* Simple animated spinner */
+.custom-loader {
+  border: 6px solid #eee;
+  border-top: 6px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+/* Spin animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+  

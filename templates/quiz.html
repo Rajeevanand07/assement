@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        text-align: center;
+        margin: 0;
+        padding: 2rem;
+      }
+      h2 {
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+      }
+      form {
+        display: inline-block;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: left;
+      }
+      .question {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border-left: 5px solid #3498db;
+      }
+      .question p {
+        font-weight: bold;
+        color: #333;
+      }
+      label {
+        display: block;
+        padding: 8px;
+        background: #ecf0f1;
+        border-radius: 5px;
+        margin-top: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      input[type="radio"] {
+        margin-right: 10px;
+      }
+      label:hover {
+        background: #d5dbdb;
+      }
+      button {
+        display: block;
+        width: 100%;
+        padding: 0.75rem;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Quiz on: {{ skill }}</h2>
+
+    <form method="post" action="/submit">
+      <input type="hidden" name="skill" value="{{ skill }}" />
+      <input type="hidden" name="answers" value='{{ answers | tojson }}' />
+      <input type="hidden" name="questions_text" value='{{ questions_text | tojson }}' />
+
+      {% for q in questions %}
+      <div class="question">
+        <p>Q{{ loop.index }}. {{ q.question }}</p>
+        {% set qid = loop.index0 %}
+        {% for option in q.options %}
+          <label>
+            <input
+              type="radio"
+              name="q{{ qid }}"
+              value="{{ ['A', 'B', 'C', 'D'][loop.index0] }}"
+              required
+            />
+            {{ ['A', 'B', 'C', 'D'][loop.index0] }}) {{ option }}
+          </label>
+        {% endfor %}
+      </div>
+      {% endfor %}
+
+      <button type="submit">Submit Answers</button>
+    </form>
+  </body>
+</html>

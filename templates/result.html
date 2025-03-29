@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      text-align: center;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: auto;
+      text-align: left;
+    }
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+    .score {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #27ae60;
+    }
+    .weak-topics {
+      font-size: 1.1rem;
+      color: #c0392b;
+      font-weight: bold;
+    }
+    ul {
+      padding-left: 1.5rem;
+      list-style-type: disc;
+    }
+    a {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: #3498db;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    a:hover {
+      background-color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Your Score</h1>
+    <p class="score">{{ score }}/5</p>
+
+    <h1>Weak Topics</h1>
+    <p class="weak-topics">{{ weak_topics }}</p>
+
+    <h1>Recommended Learning</h1>
+    <div>
+      {% set lines = learning_content.split('\n') %}
+      {% for line in lines %}
+        {% if line.startswith("##") %}
+          <h1>{{ line[2:].strip() }}</h1>
+        {% elif line.startswith("- ") %}
+          {% if not loop.previtem or not loop.previtem.startswith("- ") %}
+            <ul>
+          {% endif %}
+          <li>{{ line[2:] }}</li>
+          {% if loop.nextitem and not loop.nextitem.startswith("- ") %}
+            </ul>
+          {% endif %}
+        {% else %}
+          <p>{{ line }}</p>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <a href="/">Take Another Quiz</a>
+  </div>
+
+</body>
+</html>
